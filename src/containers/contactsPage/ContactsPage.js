@@ -4,6 +4,18 @@ import { ContactForm } from "../../components/contactForm/ContactForm";
 import { TileList } from "../../components/tileList/TileList";
 
 export const ContactsPage = (props) => {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [duplicate, setDuplicate] = useState(false);
+
+  // Write function with useEffect to check if the current Name state matches a name in the Contacts array
+  const duplicateCheck = useEffect(() => {
+    if (props.contacts.name.some === name) {
+      setDuplicate(true);
+    }
+  });
+
   /*
   Define state variables for 
   contact info and duplicate check
