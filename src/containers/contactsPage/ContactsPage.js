@@ -11,7 +11,7 @@ export const ContactsPage = (props) => {
 
   // Write function with useEffect to check if the current Name state matches a name in the Contacts array
   const duplicateCheck = useEffect(() => {
-    if (props.contacts.name.some === name) {
+    if (props.contacts.name === name) {
       setDuplicate(true);
     }
   });
