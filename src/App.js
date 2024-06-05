@@ -17,6 +17,7 @@ function App() {
   // Add new contact
   const addContact = (newContact) => {
     setContacts((prevContacts) => [...prevContacts, newContact]);
+    console.log("addContact triggered");
   };
 
   // Add new appointment
@@ -34,7 +35,7 @@ function App() {
         <Route index element={<Navigate to={ROUTES.CONTACTS} replace />} />
         <Route
           path={ROUTES.CONTACTS}
-          element={<ContactsPage contacts={contacts} onAdd={addContact} />}
+          element={<ContactsPage contacts={contacts} addContact={addContact} />}
         />
         <Route
           path={ROUTES.APPOINTMENTS}

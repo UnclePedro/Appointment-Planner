@@ -17,7 +17,7 @@ export const ContactForm = ({
           <input
             type="text"
             value={newName}
-            onChange={(e) => setNewName(e.target.value)}
+            onChange={(e) => setNewName(e.target.value) & console.log(newName)}
           />
         </label>
         <label>
@@ -25,8 +25,11 @@ export const ContactForm = ({
           <input
             type="tel"
             value={newPhone}
-            pattern="^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$"
-            onChange={(e) => setNewPhone(e.target.value)}
+            // Need to fix RegEx
+            // pattern="^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$"
+            onChange={(e) =>
+              setNewPhone(e.target.value) & console.log(newPhone)
+            }
           />
         </label>
         <label>
@@ -34,7 +37,9 @@ export const ContactForm = ({
           <input
             type="email"
             value={newEmail}
-            onChange={(e) => setNewEmail(e.target.value)}
+            onChange={(e) =>
+              setNewEmail(e.target.value) & console.log(newEmail)
+            }
           />
         </label>
         <input type="submit"></input>

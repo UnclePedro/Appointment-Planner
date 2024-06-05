@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { ContactForm } from "../../components/contactForm/ContactForm";
 import { TileList } from "../../components/tileList/TileList";
 
-export const ContactsPage = (props) => {
+export const ContactsPage = ({ addContact, contacts }) => {
   const [newName, setNewName] = useState("");
   const [newPhone, setNewPhone] = useState("");
   const [newEmail, setNewEmail] = useState("");
@@ -11,18 +11,19 @@ export const ContactsPage = (props) => {
 
   // Write function with useEffect to check if the current Name state matches a name in the Contacts array
   const duplicateCheck = useEffect(() => {
-    if (props.contacts.some((savedContact) => savedContact.name === newName)) {
+    if (contacts.some((savedContact) => savedContact.name === newName)) {
       setDuplicate(true);
     }
-  }, [props.contacts, newName]);
+  }, [contacts, newName]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!duplicate) {
-      props.addContact({ name: newName, phone: newPhone, email: newEmail });
+      addContact({ name: newName, phone: newPhone, email: newEmail });
       setNewName("");
       setNewPhone("");
       setNewEmail("");
+      console.log("handleSubmit triggered");
     } else window.alert("Contact with this name already exists.");
   };
 
@@ -31,19 +32,19 @@ export const ContactsPage = (props) => {
       <section>
         <h2>Add Contact</h2>
         <ContactForm
-          onSubmit={handleSubmit}
-          name={newName}
+          handleSubmit={handleSubmit}
+          newName={newName}
           setNewName={setNewName}
-          phone={newPhone}
+          newPhone={newPhone}
           setNewPhone={setNewPhone}
-          email={newEmail}
+          newEmail={newEmail}
           setNewEmail={setNewEmail}
         />
       </section>
       <hr />
       <section>
         <h2>Contacts</h2>
-        <TileList contacts={props.contacts} />
+        <TileList contacts={contacts} />
       </section>
     </div>
   );
