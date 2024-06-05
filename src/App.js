@@ -15,9 +15,8 @@ function App() {
   const [appointments, setAppointments] = useState([]);
 
   // Add new contact
-  const addContact = (name, phone, email) => {
-    const contactToAdd = { name, phone, email };
-    setContacts((prevContacts) => [...prevContacts, contactToAdd]);
+  const addContact = (newContact) => {
+    setContacts((prevContacts) => [...prevContacts, newContact]);
   };
 
   // Add new appointment

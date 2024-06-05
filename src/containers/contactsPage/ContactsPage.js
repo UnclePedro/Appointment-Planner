@@ -14,12 +14,12 @@ export const ContactsPage = (props) => {
     if (props.contacts.some((savedContact) => savedContact.name === newName)) {
       setDuplicate(true);
     }
-  });
+  }, [props.contacts, newName]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!duplicate) {
-      props.addContact();
+      props.addContact({ name: newName, phone: newPhone, email: newEmail });
       setNewName("");
       setNewPhone("");
       setNewEmail("");
@@ -30,7 +30,15 @@ export const ContactsPage = (props) => {
     <div>
       <section>
         <h2>Add Contact</h2>
-        <ContactForm onSubmit={handleSubmit} />
+        <ContactForm
+          onSubmit={handleSubmit}
+          name={newName}
+          setNewName={setNewName}
+          phone={newPhone}
+          setNewPhone={setNewPhone}
+          email={newEmail}
+          setNewEmail={setNewEmail}
+        />
       </section>
       <hr />
       <section>
