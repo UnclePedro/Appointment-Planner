@@ -1,26 +1,53 @@
 import React from "react";
+import { ContactPicker } from "../../components/contactPicker/ContactPicker";
 
 const getTodayString = () => {
-  const [month, day, year] = new Date()
-    .toLocaleDateString("en-US")
-    .split("/");
+  const [month, day, year] = new Date().toLocaleDateString("en-US").split("/");
   return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
 };
 
 export const AppointmentForm = ({
   contacts,
-  title,
-  setTitle,
+  name,
+  setName,
   contact,
   setContact,
   date,
   setDate,
-  time,
-  setTime,
-  handleSubmit
+  appointmentTime,
+  setAppointmentTime,
+  handleSubmit,
 }) => {
-
   return (
-    <></>
+    <>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </label>
+        <label>
+          Date:
+          <input
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+        </label>
+        <label>
+          Time:
+          <input
+            type="time"
+            value={appointmentTime}
+            onChange={(e) => setAppointmentTime(e.target.value)}
+          />
+        </label>
+        <ContactPicker />
+        <input type="submit"></input>
+      </form>
+    </>
   );
 };

@@ -11,7 +11,9 @@ import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage
 import { ContactsPage } from "./containers/contactsPage/ContactsPage";
 
 function App() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState([
+    { name: "Peter", phone: "0401", email: "peter@bigsmoke.com" },
+  ]);
   const [appointments, setAppointments] = useState([]);
 
   // Add new contact
@@ -21,11 +23,10 @@ function App() {
   };
 
   // Add new appointment
-  const addAppointment = (name, contact, date, time) => {
-    const appointmentToAdd = { name, contact, date, time };
+  const addAppointment = (newAppointment) => {
     setAppointments((prevAppointments) => [
       ...prevAppointments,
-      appointmentToAdd,
+      newAppointment,
     ]);
   };
 
@@ -42,7 +43,8 @@ function App() {
           element={
             <AppointmentsPage
               appointments={appointments}
-              onAdd={addAppointment}
+              contacts={contacts}
+              addAppointment={addAppointment}
             />
           }
         />
