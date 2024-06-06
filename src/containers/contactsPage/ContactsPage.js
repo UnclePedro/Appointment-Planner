@@ -24,7 +24,7 @@ export const ContactsPage = ({ addContact, contacts }) => {
       setNewPhone("");
       setNewEmail("");
       console.log("handleSubmit triggered");
-    } else window.alert("Contact with this name already exists.");
+    } else window.alert("Contact with your details already exists.");
   };
 
   return (
