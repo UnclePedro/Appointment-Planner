@@ -11,16 +11,16 @@ import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage
 import { ContactsPage } from "./containers/contactsPage/ContactsPage";
 
 function App() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState([
+    { name: "Peter", phone: "010101", email: "asdf" },
+  ]);
   const [appointments, setAppointments] = useState([]);
 
-  // Add new contact
   const addContact = (newContact) => {
     setContacts((prevContacts) => [...prevContacts, newContact]);
     console.log("addContact triggered");
   };
 
-  // Add new appointment
   const addAppointment = (newAppointment) => {
     setAppointments((prevAppointments) => [
       ...prevAppointments,

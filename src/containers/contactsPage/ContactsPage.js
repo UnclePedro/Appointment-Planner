@@ -18,13 +18,14 @@ export const ContactsPage = ({ addContact, contacts }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!duplicate) {
+    if (!duplicate && newName && newPhone && newEmail) {
       addContact({ name: newName, phone: newPhone, email: newEmail });
       setNewName("");
       setNewPhone("");
       setNewEmail("");
-      console.log("handleSubmit triggered");
-    } else window.alert("Contact with your details already exists.");
+    } else {
+      window.alert("Ensure the form is completed and the name is unique.");
+    }
   };
 
   return (

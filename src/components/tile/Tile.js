@@ -7,6 +7,7 @@ export const Tile = ({ name, description }) => {
       {Object.values(description).map((item, index) => (
         <p key={index}>{item}</p>
       ))}
+      <p>______________________________</p>
     </div>
   );
 };
