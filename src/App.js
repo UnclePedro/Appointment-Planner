@@ -11,9 +11,7 @@ import { AppointmentsPage } from "./containers/appointmentsPage/AppointmentsPage
 import { ContactsPage } from "./containers/contactsPage/ContactsPage";
 
 function App() {
-  const [contacts, setContacts] = useState([
-    { name: "Peter", phone: "010101", email: "asdf" },
-  ]);
+  const [contacts, setContacts] = useState([]);
   const [appointments, setAppointments] = useState([]);
 
   const addContact = (newContact) => {
